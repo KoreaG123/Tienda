@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Carrito de compras - BARCALM">
+    <title>Carrito de Compras - BARCALM</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <a href="https://wa.me/51904286250" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <p><i class="fas fa-truck"></i> Envío gratis en compras mayores a S/100</p>
+            </div>
+        </div>
+        
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html">
+                            <h1 class="logo-text">BARCALM</h1>
+                        </a>
+                    </div>
+                    
+                    <div class="nav-menu" id="navMenu">
+                        <ul class="nav-list">
+                            <li><a href="index.html">Inicio</a></li>
+                            <li><a href="tienda.html">Tienda</a></li>
+                            <li><a href="index.html#promociones">Promociones</a></li>
+                            <li><a href="contacto.html">Contacto</a></li>
+                            <li><a href="sobre-nosotros.html">Nosotros</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nav-actions">
+                        <a href="#" class="nav-icon" id="btnBuscar">
+                            <i class="fas fa-search"></i>
+                        </a>
+                        <a href="#" class="nav-icon" id="btnUsuario">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <a href="carrito.html" class="nav-icon cart-icon active">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                        <button class="hamburger" id="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="carrito-container">
+        <div class="container">
+            <h1 class="section-title">Carrito de Compras</h1>
+
+            <div class="carrito-steps">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <span>Carrito</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <span>Información</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <span>Pago</span>
+                </div>
+            </div>
+
+            <div class="carrito-layout" id="carritoContenido">
+                <!-- Carrito vacío -->
+                <div class="carrito-vacio" id="carritoVacio">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h2>Tu carrito está vacío</h2>
+                    <p>¡Agrega productos para comenzar tu compra!</p>
+                    <a href="tienda.html" class="btn btn-primary">
+                        <i class="fas fa-shopping-bag"></i> Ir a la Tienda
+                    </a>
+                </div>
+
+                <!-- Carrito con productos -->
+                <div class="carrito-productos" id="carritoProductos" style="display: none;">
+                    <div class="productos-lista">
+                        <div class="carrito-header">
+                            <h2>Productos</h2>
+                            <button class="btn-limpiar" onclick="vaciarCarrito()">
+                                <i class="fas fa-trash"></i> Vaciar Carrito
+                            </button>
+                        </div>
+
+                        <div id="listaProductos">
+                            <!-- Los productos se cargan dinámicamente -->
+                        </div>
+                    </div>
+
+                    <div class="carrito-resumen">
+                        <h3>Resumen del Pedido</h3>
+                        
+                        <div class="resumen-item">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">S/0.00</span>
+                        </div>
+                        
+                        <div class="resumen-item">
+                            <span>Envío:</span>
+                            <span id="envio">S/0.00</span>
+                        </div>
+
+                        <div class="resumen-item descuento" id="descuentoItem" style="display: none;">
+                            <span>Descuento:</span>
+                            <span id="descuento">-S/0.00</span>
+                        </div>
+
+                        <div class="resumen-divider"></div>
+
+                        <div class="resumen-total">
+                            <span>Total:</span>
+                            <span id="total">S/0.00</span>
+                        </div>
+
+                        <div class="cupon-form">
+                            <input type="text" id="cuponInput" placeholder="Código de cupón">
+                            <button class="btn-cupon" onclick="aplicarCupon()">Aplicar</button>
+                        </div>
+
+                        <button class="btn btn-primary btn-block" onclick="procederCheckout()">
+                            Proceder al Pago
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+
+                        <a href="tienda.html" class="btn-seguir-comprando">
+                            <i class="fas fa-arrow-left"></i> Seguir Comprando
+                        </a>
+
+                        <div class="garantias">
+                            <div class="garantia-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Compra Segura</span>
+                            </div>
+                            <div class="garantia-item">
+                                <i class="fas fa-undo"></i>
+                                <span>30 días de devolución</span>
+                            </div>
+                            <div class="garantia-item">
+                                <i class="fas fa-truck"></i>
+                                <span>Envío rápido</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Productos Relacionados -->
+            <div class="productos-relacionados" style="margin-top: 80px;">
+                <h2 class="section-title">Te Puede Interesar</h2>
+                <div class="productos-grid" id="productosRelacionados">
+                    <!-- Productos relacionados se cargan dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>BARCALM</h3>
+                    <p>Tu tienda de moda online con las mejores tendencias.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="tienda.html">Tienda</a></li>
+                        <li><a href="sobre-nosotros.html">Nosotros</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="#">Guía de Tallas</a></li>
+                        <li><a href="#">Envíos</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Lima, Perú</li>
+                        <li><i class="fas fa-phone"></i> +51 999 999 999</li>
+                        <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a6cfc8c0c9e6c4c7d4c5c7cacb88c5c9cb">[email&#160;protected]</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 BARCALM. Todos los derechos reservados.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasy

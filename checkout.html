@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Finalizar compra - BARCALM">
+    <title>Checkout - BARCALM</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <a href="https://wa.me/51904286250" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <p><i class="fas fa-lock"></i> Compra 100% Segura</p>
+            </div>
+        </div>
+        
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html">
+                            <h1 class="logo-text">BARCALM</h1>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="checkout-container">
+        <div class="container">
+            <h1 class="section-title">Finalizar Compra</h1>
+
+            <div class="carrito-steps">
+                <div class="step completed">
+                    <div class="step-number"><i class="fas fa-check"></i></div>
+                    <span>Carrito</span>
+                </div>
+                <div class="step-line completed"></div>
+                <div class="step active">
+                    <div class="step-number">2</div>
+                    <span>Información</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <span>Pago</span>
+                </div>
+            </div>
+
+            <div class="checkout-layout">
+                <div class="checkout-form">
+                    <form id="formCheckout">
+                        <!-- Información de Contacto -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-user"></i> Información de Contacto</h2>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Nombre *</label>
+                                    <input type="text" name="nombre" required placeholder="Juan">
+                                </div>
+                                <div class="form-group">
+                                    <label>Apellidos *</label>
+                                    <input type="text" name="apellidos" required placeholder="Pérez García">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Correo Electrónico *</label>
+                                    <input type="email" name="email" required placeholder="ejemplo@correo.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Teléfono *</label>
+                                    <input type="tel" name="telefono" required placeholder="+51 999 999 999">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dirección de Envío -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-map-marker-alt"></i> Dirección de Envío</h2>
+                            
+                            <div class="form-group">
+                                <label>Dirección Completa *</label>
+                                <input type="text" name="direccion" required 
+                                       placeholder="Av. Principal 123, Departamento 456">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Distrito *</label>
+                                    <select name="distrito" required id="distritoSelect">
+                                        <option value="">Selecciona tu distrito</option>
+                                        <option value="miraflores">Miraflores</option>
+                                        <option value="san-isidro">San Isidro</option>
+                                        <option value="surco">Surco</option>
+                                        <option value="san-borja">San Borja</option>
+                                        <option value="la-molina">La Molina</option>
+                                        <option value="jesus-maria">Jesús María</option>
+                                        <option value="lince">Lince</option>
+                                        <option value="magdalena">Magdalena</option>
+                                        <option value="pueblo-libre">Pueblo Libre</option>
+                                        <option value="otros">Otros distritos</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Referencia</label>
+                                    <input type="text" name="referencia" 
+                                           placeholder="Cerca al parque, frente a...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Método de Entrega -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-truck"></i> Método de Entrega</h2>
+                            
+                            <div class="metodos-entrega">
+                                <label class="metodo-opcion">
+                                    <input type="radio" name="entrega" value="domicilio" checked>
+                                    <div class="metodo-card">
+                                        <i class="fas fa-home"></i>
+                                        <div>
+                                            <strong>Entrega a Domicilio</strong>
+                                            <p>24-48 horas - S/15.00</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="metodo-opcion">
+                                    <input type="radio" name="entrega" value="tienda">
+                                    <div class="metodo-card">
+                                        <i class="fas fa-store"></i>
+                                        <div>
+                                            <strong>Recojo en Tienda</strong>
+                                            <p>Disponible en 24 horas - GRATIS</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Método de Pago -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-credit-card"></i> Método de Pago</h2>
+                            
+                            <div class="metodos-pago">
+                                <label class="metodo-opcion">
+                                    <input type="radio" name="pago" value="yape" checked>
+                                    <div class="metodo-card">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <div>
+                                            <strong>Yape</strong>
+                                            <p>Pago instantáneo</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="metodo-opcion">
+                                    <input type="radio" name="pago" value="plin">
+                                    <div class="metodo-card">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <div>
+                                            <strong>Plin</strong>
+                                            <p>Pago instantáneo</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="metodo-opcion">
+                                    <input type="radio" name="pago" value="tarjeta">
+                                    <div class="metodo-card">
+                                        <i class="fas fa-credit-card"></i>
+                                        <div>
+                                            <strong>Tarjeta</strong>
+                                            <p>Visa, Mastercard</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="metodo-opcion">
+                                    <input type="radio" name="pago" value="transferencia">
+                                    <div class="metodo-card">
+                                        <i class="fas fa-university"></i>
+                                        <div>
+                                            <strong>Transferencia</strong>
+                                            <p>Depósito bancario</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Notas Adicionales -->
+                        <div class="form-section">
+                            <h2><i class="fas fa-comment"></i> Notas del Pedido (Opcional)</h2>
+                            <textarea name="notas" rows="4" 
+                                      placeholder="Instrucciones especiales, horario preferido de entrega, etc."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <a href="carrito.html" class="btn btn-outline">
+                                <i class="fas fa-arrow-left"></i> Volver al Carrito
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                Confirmar Pedido <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="checkout-resumen">
+                    <h3>Resumen del Pedido</h3>
+                    
+                    <div class="resumen-productos" id="resumenProductos">
+                        <!-- Productos se cargan dinámicamente -->
+                    </div>
+
+                    <div class="resumen-totales">
+                        <div class="resumen-item">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">S/0.00</span>
+                        </div>
+                        
+                        <div class="resumen-item">
+                            <span>Envío:</span>
+                            <span id="envio">S/0.00</span>
+                        </div>
+
+                        <div class="resumen-item descuento" id="descuentoItem" style="display: none;">
+                            <span>Descuento:</span>
+                            <span id="descuento">-S/0.00</span>
+                        </div>
+
+                        <div class="resumen-divider"></div>
+
+                        <div class="resumen-total">
+                            <span>Total a Pagar:</span>
+                            <span id="total">S/0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="seguridad-info">
+                        <i class="fas fa-lock"></i>
+                        <p>Tus datos están protegidos con encriptación SSL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 BARCALM. Todos los derechos reservados.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Confirmación -->
+    <div class="modal" id="modalConfirmacion">
+        <div class="modal-content confirmacion-modal">
+            <div class="confirmacion-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>¡Pedido Realizado!</h2>
+            <p>Tu pedido ha sido registrado exitosamente</p>
+            <div class="pedido-numero">
+                <strong>Número de Pedido:</strong>
+                <span id="numeroPedido">#00000</span>
+            </div>
+            <p class="confirmacion-texto">
+                Te hemos enviado un correo de confirmación con los detalles de tu compra.
+                En breve nos contactaremos contigo por WhatsApp para coordinar la entrega.
+            </p>
+            <div class="confirmacion-acciones">
+                <a href="index.html" class="btn btn-primary">
+                    Volver al Inicio
+                </a>
+                <a href="tienda.html" class="btn btn-outline">
+                    Seguir Comprando
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

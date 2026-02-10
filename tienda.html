@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo completo de BARCALM - Encuentra la mejor ropa y accesorios">
+    <title>Tienda - BARCALM</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tienda-container {
+            padding: 80px 0;
+            background: #f5f5f5;
+        }
+
+        .tienda-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+
+        .filtros-sidebar {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .filtro-grupo {
+            margin-bottom: 30px;
+        }
+
+        .filtro-titulo {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .filtro-opciones {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .filtro-opcion {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filtro-opcion input[type="checkbox"],
+        .filtro-opcion input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .filtro-opcion label {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .rango-precio {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .rango-precio input {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+        }
+
+        .btn-filtrar {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .productos-header {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .productos-resultados {
+            font-weight: 600;
+        }
+
+        .productos-ordenar select {
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn-limpiar-filtros {
+            background: none;
+            color: var(--accent-color);
+            text-decoration: underline;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .tienda-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .filtros-sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .productos-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://wa.me/51999999999" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <p><i class="fas fa-truck"></i> Envío gratis en compras mayores a S/100</p>
+            </div>
+        </div>
+        
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html">
+                            <h1 class="logo-text">BARCALM</h1>
+                        </a>
+                    </div>
+                    
+                    <div class="nav-menu" id="navMenu">
+                        <ul class="nav-list">
+                            <li><a href="index.html">Inicio</a></li>
+                            <li><a href="tienda.html" class="active">Tienda</a></li>
+                            <li><a href="index.html#promociones">Promociones</a></li>
+                            <li><a href="contacto.html">Contacto</a></li>
+                            <li><a href="sobre-nosotros.html">Nosotros</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nav-actions">
+                        <a href="#" class="nav-icon" id="btnBuscar">
+                            <i class="fas fa-search"></i>
+                        </a>
+                        <a href="#" class="nav-icon" id="btnUsuario">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <a href="carrito.html" class="nav-icon cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                        <button class="hamburger" id="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="tienda-container">
+        <div class="container">
+            <h1 class="section-title">Todos los Productos</h1>
+
+            <div class="tienda-layout">
+                <aside class="filtros-sidebar">
+                    <h2 style="margin-bottom: 25px;">Filtros</h2>
+
+                    <div class="filtro-grupo">
+                        <h3 class="filtro-titulo">Categorías</h3>
+                        <div class="filtro-opciones">
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="cat-mujer" value="Mujer">
+                                <label for="cat-mujer">Mujer</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="cat-hombre" value="Hombre">
+                                <label for="cat-hombre">Hombre</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="cat-accesorios" value="Accesorios">
+                                <label for="cat-accesorios">Accesorios</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="cat-calzado" value="Calzado">
+                                <label for="cat-calzado">Calzado</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filtro-grupo">
+                        <h3 class="filtro-titulo">Rango de Precio</h3>
+                        <div class="rango-precio">
+                            <input type="number" id="precioMin" placeholder="Min" min="0">
+                            <span>-</span>
+                            <input type="number" id="precioMax" placeholder="Max" min="0">
+                        </div>
+                    </div>
+
+                    <div class="filtro-grupo">
+                        <h3 class="filtro-titulo">Tallas</h3>
+                        <div class="filtro-opciones">
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="talla-s" value="S">
+                                <label for="talla-s">S</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="talla-m" value="M">
+                                <label for="talla-m">M</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="talla-l" value="L">
+                                <label for="talla-l">L</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="talla-xl" value="XL">
+                                <label for="talla-xl">XL</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-filtrar" onclick="aplicarFiltros()">
+                        Aplicar Filtros
+                    </button>
+                    <button class="btn-limpiar-filtros" onclick="limpiarFiltros()">
+                        Limpiar Filtros
+                    </button>
+                </aside>
+
+                <div class="productos-contenido">
+                    <div class="productos-header">
+                        <p class="productos-resultados">
+                            Mostrando <span id="totalProductos">0</span> productos
+                        </p>
+                        <div class="productos-ordenar">
+                            <select id="ordenarSelect" onchange="aplicarOrden()">
+                                <option value="">Ordenar por</option>
+                                <option value="nombre">Nombre</option>
+                                <option value="precio-asc">Precio: Menor a Mayor</option>
+                                <option value="precio-desc">Precio: Mayor a Menor</option>
+                                <option value="rating">Mejor Valorados</option>
+                                <option value="nuevo">Más Nuevos</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="productos-grid" id="productosGrid">
+                        <!-- Los productos se cargan dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>BARCALM</h3>
+                    <p>Tu tienda de moda online con las mejores tendencias.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="tienda.html">Tienda</a></li>
+                        <li><a href="sobre-nosotros.html">Nosotros</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="#">Guía de Tallas</a></li>
+                        <li><a href="#">Envíos</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Lima, Perú</li>
+                        <li><i class="fas fa-phone"></i> +51 999 999 999</li>
+                        <li><i class="fas fa-envelope"></i> info@barcalm.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 BARCALM. Todos los derechos reservados.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="js/tienda.js"></script>
+</body>
+</html>

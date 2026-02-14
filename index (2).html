@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tienda de ropa urbana elegante con carrito de compras">
+  <meta property="og:title" content="Tienda Urbana">
+  <meta property="og:description" content="Compra ropa urbana y elegante">
+  <meta property="og:image" content="img/portada.jpg">
+  <title>Tienda Urbana</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <video autoplay muted loop class="video-header">
+      <source src="vide-cabezera/cabezera.mp4" type="video/mp4">
+    </video>
+    <h1>Tienda Urbana</h1>
+  </header>
+
+  <section class="productos">
+    <div class="producto"><img src="img/pantalon.jpg"><p>Pantalón</p><button onclick="addToCart('Pantalón')">Agregar</button></div>
+    <div class="producto"><img src="img/camisa.jpg"><p>Camisa</p><button onclick="addToCart('Camisa')">Agregar</button></div>
+    <div class="producto"><img src="img/chaqueta.jpg"><p>Chaqueta</p><button onclick="addToCart('Chaqueta')">Agregar</button></div>
+    <div class="producto"><img src="img/vestido.jpg"><p>Vestido</p><button onclick="addToCart('Vestido')">Agregar</button></div>
+    <div class="producto"><img src="img/gorra.jpg"><p>Gorra</p><button onclick="addToCart('Gorra')">Agregar</button></div>
+    <div class="producto"><img src="img/zapatillas.jpg"><p>Zapatillas</p><button onclick="addToCart('Zapatillas')">Agregar</button></div>
+    <div class="producto"><img src="img/falda.jpg"><p>Falda</p><button onclick="addToCart('Falda')">Agregar</button></div>
+    <div class="producto"><img src="img/hoodie.jpg"><p>Hoodie</p><button onclick="addToCart('Hoodie')">Agregar</button></div>
+  </section>
+
+  <aside class="carrito">
+    <h2>Carrito</h2>
+    <ul id="cart-items"></ul>
+    <button onclick="checkout()">Finalizar Compra</button>
+  </aside>
+
+  <footer>
+    <p>Síguenos:</p>
+    <a href="#">Facebook</a> | 
+    <a href="#">Instagram</a> | 
+    <a href="#">Twitter</a> | 
+    <a href="#">TikTok</a>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

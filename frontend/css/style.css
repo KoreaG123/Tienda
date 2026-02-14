@@ -1,9 +1,0 @@
-body { font-family: Arial, sans-serif; margin: 0; background: #111; color: #fff; }
-header { position: relative; text-align: center; }
-.video-header { width: 100%; height: auto; object-fit: cover; }
-h1 { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); font-size: 3rem; background: rgba(0,0,0,0.5); padding: 10px; }
-.productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; padding: 20px; }
-.producto { background: #222; padding: 10px; border-radius: 8px; text-align: center; }
-.producto img { width: 100%; border-radius: 8px; }
-.carrito { background: #333; padding: 20px; margin: 20px; border-radius: 8px; }
-footer { text-align: center; padding: 20px; background: #000; }

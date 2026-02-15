@@ -22,7 +22,7 @@ interface StoreState {
   adminLogout: () => void;
 }
 
-const ADMIN_PASSWORD = 'wander@hombr24'; // Cambiar por tu contraseña
+const ADMIN_PASSWORD = 'hombr2024'; // Cambiar por tu contraseña
 
 export const useStore = create<StoreState>()(
   persist(

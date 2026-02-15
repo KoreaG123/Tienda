@@ -1,12 +1,21 @@
 import { Product } from '@/types';
 
+import poloNegro from '@/assets/polo-negro.jpg';
+import pantalon from '@/assets/pantalon.jpg';
+import camisa from '@/assets/camisa.jpg';
+import short from '@/assets/short.jpg';
+import poloRayas from '@/assets/polo-rayas.jpg';
+import jean from '@/assets/jean.jpg';
+import camisaCuadros from '@/assets/camisa-cuadros.jpg';
+import gorra from '@/assets/gorra.jpg';
+
 export const products: Product[] = [
   {
     id: '1',
     name: 'Polo Negro Premium',
     price: 59.90,
     description: 'Polo de algodón 100% premium, corte slim fit, ideal para cualquier ocasión.',
-    image: '/img/polo-negro.jpg',
+    image: poloNegro,,
     category: 'polo',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['Negro', 'Blanco', 'Gris'],
@@ -17,7 +26,7 @@ export const products: Product[] = [
     name: 'Pantalón Casual Beige',
     price: 89.90,
     description: 'Pantalón casual de tela suave, perfecto para el día a día.',
-    image: '/img/pantalon.jpg',
+    image: pantalon,
     category: 'pantalon',
     sizes: ['28', '30', '32', '34', '36'],
     colors: ['Beige', 'Negro', 'Azul Marino'],
@@ -28,7 +37,7 @@ export const products: Product[] = [
     name: 'Camisa Blanca Formal',
     price: 79.90,
     description: 'Camisa formal de algodón, perfecta para reuniones y eventos.',
-    image: '/img/camisa.jpg',
+    image: camisa,
     category: 'camisa',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['Blanco', 'Celeste', 'Negro'],
@@ -39,7 +48,7 @@ export const products: Product[] = [
     name: 'Short Deportivo',
     price: 49.90,
     description: 'Short deportivo de tela ligera y transpirable.',
-    image: '/img/short.jpg',
+    image: short,
     category: 'short',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['Negro', 'Gris', 'Azul'],
@@ -50,7 +59,7 @@ export const products: Product[] = [
     name: 'Polo Rayas Azul',
     price: 64.90,
     description: 'Polo a rayas de diseño moderno y elegante.',
-    image: '/img/polo-rayas.jpg',
+    image: polo-rayas,
     category: 'polo',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['Azul/Blanco', 'Negro/Gris'],
@@ -61,7 +70,7 @@ export const products: Product[] = [
     name: 'Pantalón Jean Clásico',
     price: 99.90,
     description: 'Jean de mezclilla resistente, corte clásico.',
-    image: '/img/jean.jpg',
+    image: jean,
     category: 'pantalon',
     sizes: ['28', '30', '32', '34', '36'],
     colors: ['Azul', 'Negro'],
@@ -72,7 +81,7 @@ export const products: Product[] = [
     name: 'Camisa Casual Cuadros',
     price: 69.90,
     description: 'Camisa de cuadros casual, perfecta para el fin de semana.',
-    image: '/img/camisa-cuadros.jpg',
+    image: camisa-cuadros,
     category: 'camisa',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['Rojo/Negro', 'Azul/Blanco'],
@@ -83,7 +92,7 @@ export const products: Product[] = [
     name: 'Gorra Snapback',
     price: 39.90,
     description: 'Gorra snapback con logo bordado, ajuste universal.',
-    image: '/img/gorra.jpg',
+    image: gorra,
     category: 'accesorio',
     sizes: ['Única'],
     colors: ['Negro', 'Blanco', 'Azul'],

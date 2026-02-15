@@ -15,7 +15,7 @@ export const products: Product[] = [
     name: 'Polo Negro Premium',
     price: 59.90,
     description: 'Polo de algodón 100% premium, corte slim fit, ideal para cualquier ocasión.',
-    image: poloNegro,,
+    image: poloNegro,
     category: 'polo',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['Negro', 'Blanco', 'Gris'],

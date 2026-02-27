@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-black text-white font-sans antialiased;
+  }
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-black;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gold-500 rounded;
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply bg-gold-500 hover:bg-gold-400 text-black font-semibold px-6 py-3 transition-all duration-300 uppercase tracking-widest text-sm;
+  }
+  .btn-outline {
+    @apply border border-white hover:bg-white hover:text-black text-white font-semibold px-6 py-3 transition-all duration-300 uppercase tracking-widest text-sm;
+  }
+  .input-dark {
+    @apply bg-zinc-900 border border-zinc-700 focus:border-gold-500 text-white px-4 py-3 w-full outline-none transition-colors duration-200 placeholder-zinc-500;
+  }
+}

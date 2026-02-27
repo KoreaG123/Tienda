@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment
+.env
+*/.env
+
+# Build
+dist/
+*/dist/
+build/
+
+# Uploads (optional - you may want to gitignore these)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

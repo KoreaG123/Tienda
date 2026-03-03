@@ -10,6 +10,7 @@ export default function CheckoutPage() {
   const [form, setForm] = useState({ nombre: '', telefono: '', direccion: '', ciudad: '' });
   const [captura, setCaptura] = useState(null);
   const [capturaPreview, setCapturaPreview] = useState(null);
+  const [capturaBase64, setCapturaBase64] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -27,11 +28,19 @@ export default function CheckoutPage() {
     const file = e.target.files[0];
     if (file) {
       setCaptura(file);
-      setCapturaPreview(URL.createObjectURL(file));
+      const previewUrl = URL.createObjectURL(file);
+      setCapturaPreview(previewUrl);
+
+      // Convert to base64
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCapturaBase64(reader.result);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
-  const buildWhatsAppMessage = (orderData) => {
+  const buildWhatsAppMessage = () => {
     const productList = cart.map(p => `• ${p.nombre} (${p.talla}, ${p.color}) x${p.cantidad} = S/ ${(p.precio * p.cantidad).toFixed(2)}`).join('\n');
     return encodeURIComponent(
       `🛍️ *NUEVO PEDIDO - HombR*\n\n` +
@@ -51,16 +60,25 @@ export default function CheckoutPage() {
 
     setLoading(true);
     try {
-      const formData = new FormData();
-      Object.entries(form).forEach(([k, v]) => formData.append(k, v));
-      formData.append('productos', JSON.stringify(cart.map(i => ({
-        nombre: i.nombre, precio: i.precio, cantidad: i.cantidad, talla: i.talla, color: i.color, imagen: i.imagen
-      }))));
-      formData.append('total', total.toString());
-      if (captura) formData.append('captura', captura);
+      const orderData = {
+        nombre: form.nombre,
+        telefono: form.telefono,
+        direccion: form.direccion,
+        ciudad: form.ciudad,
+        productos: cart.map(i => ({
+          nombre: i.nombre,
+          precio: i.precio,
+          cantidad: i.cantidad,
+          talla: i.talla,
+          color: i.color,
+          imagen: i.imagen
+        })),
+        total: total,
+        capturaBase64: capturaBase64
+      };
 
-      await axios.post(`${import.meta.env.VITE_API_URL}/orders`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+      await axios.post(`${import.meta.env.VITE_API_URL}/orders`, orderData, {
+        headers: { 'Content-Type': 'application/json' }
       });
 
       clearCart();
@@ -133,9 +151,7 @@ export default function CheckoutPage() {
                     src="/images/qr-yape.png"
                     alt="QR Yape"
                     className="w-48 h-48 object-contain border border-zinc-700 p-2 bg-white mb-3"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                    }}
+                    onError={(e) => { e.target.style.display = 'none'; }}
                   />
                   <p className="text-zinc-400 text-sm text-center">
                     Escanea el QR con Yape y realiza el pago de <span className="text-gold-400 font-bold">S/ {total.toFixed(2)}</span>

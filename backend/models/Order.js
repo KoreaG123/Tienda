@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-  cliente: { type: String, required: true },
+  nombre: { type: String, required: true },
   telefono: { type: String, required: true },
   direccion: { type: String, required: true },
   ciudad: { type: String, required: true },
@@ -14,12 +14,8 @@ const orderSchema = new mongoose.Schema({
     imagen: String
   }],
   total: { type: Number, required: true },
-  captura: { type: String }, // filename of uploaded screenshot
-  estado: {
-    type: String,
-    enum: ['pendiente', 'pagado', 'enviado', 'entregado'],
-    default: 'pendiente'
-  }
+  estado: { type: String, enum: ['pendiente', 'pagado', 'enviado', 'entregado'], default: 'pendiente' },
+  capturaBase64: { type: String, default: null }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Order', orderSchema);
